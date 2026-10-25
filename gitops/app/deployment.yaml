@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudpulse-backend
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloudpulse-backend
+  template:
+    metadata:
+      labels:
+        app: cloudpulse-backend
+    spec:
+      containers:
+      - name: app
+        image: cloudpulseacr7d48.azurecr.io/cloudpulse-app:49497b8879363dc9aa47e8a35abfa7387f285314
+        ports:
+        - containerPort: 3000
